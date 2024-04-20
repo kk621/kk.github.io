@@ -1,0 +1,25 @@
+ike keychain cowa
+pre-shared-key address 0.0.0.0 0.0.0.0 key simple 1234
+quit
+ike profile cowa
+keychain cowa
+quit
+
+ipsec transform-set abc
+encapsulation-mode transport
+esp encryption-algorithm des-cbc
+esp authentication-algorithm sha1
+quit
+
+ipsec profile cowa isakmp
+transform-set cowa
+ike-profile cowa
+quit
+
+
+interface tunnel1
+tunnel protection ipsec profile cowa
+
+
+
+
